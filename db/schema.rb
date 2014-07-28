@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728191438) do
+ActiveRecord::Schema.define(version: 20140728192019) do
 
   create_table "animes", force: true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140728191438) do
     t.integer  "episode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "author_id"
   end
 
   create_table "authors", force: true do |t|
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140728191438) do
     t.string   "chapter_title", default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "author_id"
   end
 
   create_table "tags", force: true do |t|
