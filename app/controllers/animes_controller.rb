@@ -4,7 +4,7 @@ class AnimesController < ApplicationController
   # GET /animes
   # GET /animes.json
   def index
-    @animes = Anime.all
+    @animes = Anime.order :updated_at=>:desc
   end
 
   # GET /animes/1
@@ -64,7 +64,7 @@ class AnimesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_anime
-      @anime = Anime.find(params[:id])
+      @anime = Anime.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

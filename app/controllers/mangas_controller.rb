@@ -4,7 +4,7 @@ class MangasController < ApplicationController
   # GET /mangas
   # GET /mangas.json
   def index
-    @mangas = Manga.all
+    @mangas = Manga.order :updated_at=>:desc
   end
 
   # GET /mangas/1
@@ -64,7 +64,7 @@ class MangasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_manga
-      @manga = Manga.find(params[:id])
+      @manga = Manga.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

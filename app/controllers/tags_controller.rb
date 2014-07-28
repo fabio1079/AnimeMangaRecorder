@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = Tag.order :name=>:desc
   end
 
   # GET /tags/1
@@ -64,7 +64,7 @@ class TagsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tag
-      @tag = Tag.find(params[:id])
+      @tag = Tag.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
