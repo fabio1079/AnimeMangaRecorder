@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :animes
+
   resources :authors
 
   # The priority is based upon order of creation: first created -> highest priority.
