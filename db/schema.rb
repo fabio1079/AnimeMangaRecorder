@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140728191438) do
   create_table "animes", force: true do |t|
     t.string   "title"
     t.string   "season"
-    t.string   "season_title"
+    t.string   "season_title", default: ""
     t.integer  "episode"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140728191438) do
     t.string   "title"
     t.string   "volume"
     t.integer  "chapter"
-    t.string   "chapter_title"
+    t.string   "chapter_title", default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,7 +4,7 @@ class CreateMangas < ActiveRecord::Migration
       t.string :title
       t.string :volume
       t.integer :chapter
-      t.string :chapter_title
+      t.string :chapter_title, default:""
 
       t.timestamps
     end
