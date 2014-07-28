@@ -38,3 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# My gems
+gem 'bootstrap-sass', '~> 3.2.0.0'
+
+gem 'friendly_id', '~> 5.0.4'
