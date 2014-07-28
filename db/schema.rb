@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728192019) do
+ActiveRecord::Schema.define(version: 20140728192933) do
 
   create_table "animes", force: true do |t|
     t.string   "title"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20140728192019) do
     t.datetime "updated_at"
     t.integer  "author_id"
   end
+
+  create_table "animes_tags", force: true do |t|
+    t.integer  "anime_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "animes_tags", ["anime_id"], name: "index_animes_tags_on_anime_id"
+  add_index "animes_tags", ["tag_id"], name: "index_animes_tags_on_tag_id"
 
   create_table "authors", force: true do |t|
     t.string   "name"
