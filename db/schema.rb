@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728190804) do
+ActiveRecord::Schema.define(version: 20140728191318) do
 
   create_table "animes", force: true do |t|
     t.string   "title"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20140728190804) do
 
   create_table "authors", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mangas", force: true do |t|
+    t.string   "title"
+    t.string   "volume"
+    t.integer  "chapter"
+    t.string   "chapter_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
