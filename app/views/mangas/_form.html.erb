@@ -27,6 +27,14 @@
     <%= f.label :chapter_title %><br>
     <%= f.text_field :chapter_title %>
   </div>
+  <div class="field">
+    <% @tags.each do |t| %>
+      <label>
+        <%= check_box_tag "tags[]", t.id, @manga.tags.include?(t), :id=>"tags_#{t.id}" %>
+        <%= t.name %>
+      </label>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
