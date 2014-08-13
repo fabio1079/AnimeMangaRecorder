@@ -18,4 +18,8 @@ class Manga < ActiveRecord::Base
   validates :chapter_title,
     :length=>{ :maximum=>80 },
     :allow_blank=>true
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 end

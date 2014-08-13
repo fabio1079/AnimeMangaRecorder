@@ -10,4 +10,8 @@ class Author < ActiveRecord::Base
     :presence=>true,
     :uniqueness=>true,
     :length=>{ :minimum=>2, :maximum=>80 }
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
 end
