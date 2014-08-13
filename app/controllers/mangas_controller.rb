@@ -1,7 +1,7 @@
 class MangasController < ApplicationController
   before_action :set_manga, only: [:show, :edit, :update, :destroy]
-  before_action :set_tags, only: [:show, :new, :edit, :create, :update]
-  before_action :set_params_tags, only: [:update, :create]
+  before_action :set_tags, :set_authors, only: [:show, :new, :edit, :create, :update]
+  before_action :set_params_tags, :set_author, only: [:update, :create]
 
   # GET /mangas
   # GET /mangas.json
@@ -28,6 +28,7 @@ class MangasController < ApplicationController
   def create
     @manga = Manga.new(manga_params)
     @manga.tags = @params_tags
+    @manga.author = @author
 
     respond_to do |format|
       if @manga.save
@@ -44,6 +45,7 @@ class MangasController < ApplicationController
   # PATCH/PUT /mangas/1.json
   def update
     @manga.tags = @params_tags
+    @manga.author = @author
 
     respond_to do |format|
       if @manga.update(manga_params)
@@ -86,6 +88,16 @@ class MangasController < ApplicationController
       @params_tags
     end
 
+    def set_author
+      @author = Author.friendly.find(params[:author])
+    end
+
+    def set_authors
+      @authors = Author.all.map do |a|
+        [a.name, a.id]
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def manga_params
       params.require(:manga).permit(:title, :volume, :chapter, :chapter_title)
@@ -93,5 +105,9 @@ class MangasController < ApplicationController
 
     def tags_params
       params.permit(:tags=>[])
+    end
+
+    def author_params
+      params.permit(:author=>[]);
     end
 end

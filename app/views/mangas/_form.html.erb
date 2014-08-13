@@ -15,18 +15,22 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+
   <div class="field">
     <%= f.label :volume %><br>
     <%= f.text_field :volume %>
   </div>
+
   <div class="field">
     <%= f.label :chapter %><br>
     <%= f.number_field :chapter %>
   </div>
+
   <div class="field">
     <%= f.label :chapter_title %><br>
     <%= f.text_field :chapter_title %>
   </div>
+
   <div class="field">
     <% @tags.each do |t| %>
       <label>
@@ -35,6 +39,12 @@
       </label>
     <% end %>
   </div>
+
+  <div class="field">
+   <%= f.label :author %>
+   <%= select_tag(:author, options_for_select(@authors, :selected=>(@manga.author.nil? ? nil : @manga.author.id))) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
