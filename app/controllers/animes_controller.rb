@@ -1,5 +1,7 @@
 class AnimesController < ApplicationController
   before_action :set_anime, only: [:show, :edit, :update, :destroy]
+  before_action :set_tags, only: [:show, :new, :edit, :create, :update]
+  before_action :set_params_tags, only: [:update, :create]
 
   # GET /animes
   # GET /animes.json
@@ -25,6 +27,7 @@ class AnimesController < ApplicationController
   # POST /animes.json
   def create
     @anime = Anime.new(anime_params)
+    @anime.tags = @params_tags
 
     respond_to do |format|
       if @anime.save
@@ -40,6 +43,8 @@ class AnimesController < ApplicationController
   # PATCH/PUT /animes/1
   # PATCH/PUT /animes/1.json
   def update
+    @anime.tags = @params_tags
+
     respond_to do |format|
       if @anime.update(anime_params)
         format.html { redirect_to @anime, notice: 'Anime was successfully updated.' }
@@ -67,8 +72,26 @@ class AnimesController < ApplicationController
       @anime = Anime.friendly.find(params[:id])
     end
 
+    def set_tags
+      @tags = Tag.all
+    end
+
+    def set_params_tags
+      @params_tags = []
+
+      params[:tags].each do |tag|
+        @params_tags << Tag.find(tag)
+      end
+
+      @params_tags
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
       params.require(:anime).permit(:title, :season, :season_title, :episode)
+    end
+
+    def tags_params
+      params.permit(:tags=>[])
     end
 end
