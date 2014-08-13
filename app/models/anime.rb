@@ -17,4 +17,8 @@ class Anime < ActiveRecord::Base
   validates :season, :episode,
     :presence=>true,
     :length=>{ :minimum=>1, :maximum=>10 }
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 end
