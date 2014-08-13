@@ -1,7 +1,7 @@
 class AnimesController < ApplicationController
   before_action :set_anime, only: [:show, :edit, :update, :destroy]
-  before_action :set_tags, only: [:show, :new, :edit, :create, :update]
-  before_action :set_params_tags, only: [:update, :create]
+  before_action :set_tags, :set_authors, only: [:show, :new, :edit, :create, :update]
+  before_action :set_params_tags, :set_author, only: [:update, :create]
 
   # GET /animes
   # GET /animes.json
@@ -28,6 +28,7 @@ class AnimesController < ApplicationController
   def create
     @anime = Anime.new(anime_params)
     @anime.tags = @params_tags
+    @anime.author = @author
 
     respond_to do |format|
       if @anime.save
@@ -44,6 +45,7 @@ class AnimesController < ApplicationController
   # PATCH/PUT /animes/1.json
   def update
     @anime.tags = @params_tags
+    @anime.author = @author
 
     respond_to do |format|
       if @anime.update(anime_params)
@@ -84,6 +86,16 @@ class AnimesController < ApplicationController
       end
 
       @params_tags
+    end
+
+    def set_author
+      @author = Author.friendly.find(params[:author])
+    end
+
+    def set_authors
+      @authors = Author.all.map do |a|
+        [a.name, a.id]
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
