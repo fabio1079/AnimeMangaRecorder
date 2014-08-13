@@ -1,5 +1,7 @@
 class MangasController < ApplicationController
   before_action :set_manga, only: [:show, :edit, :update, :destroy]
+  before_action :set_tags, only: [:show, :new, :edit, :create, :update]
+  before_action :set_params_tags, only: [:update, :create]
 
   # GET /mangas
   # GET /mangas.json
@@ -15,19 +17,17 @@ class MangasController < ApplicationController
   # GET /mangas/new
   def new
     @manga = Manga.new
-    @tags = Tag.all
   end
 
   # GET /mangas/1/edit
   def edit
-    @tags = Tag.all
   end
 
   # POST /mangas
   # POST /mangas.json
   def create
     @manga = Manga.new(manga_params)
-    @manga.tags = set_tags
+    @manga.tags = @params_tags
 
     respond_to do |format|
       if @manga.save
@@ -43,7 +43,7 @@ class MangasController < ApplicationController
   # PATCH/PUT /mangas/1
   # PATCH/PUT /mangas/1.json
   def update
-    @manga.tags = set_tags
+    @manga.tags = @params_tags
 
     respond_to do |format|
       if @manga.update(manga_params)
@@ -56,7 +56,7 @@ class MangasController < ApplicationController
     end
   end
 
-  # DELETE /mangas/1
+  # DELETE /mangas
   # DELETE /mangas/1.json
   def destroy
     @manga.destroy
@@ -73,13 +73,17 @@ class MangasController < ApplicationController
     end
 
     def set_tags
-      @tags = []
+      @tags = Tag.all
+    end
 
-      params[:tags].each do |t|
-        @tags << Tag.find(t)
+    def set_params_tags
+      @params_tags = []
+
+      params[:tags].each do |tag|
+        @params_tags << Tag.find(tag)
       end
 
-      @tags
+      @params_tags
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
