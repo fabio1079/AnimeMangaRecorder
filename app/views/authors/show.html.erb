@@ -5,5 +5,33 @@
   <%= @author.name %>
 </p>
 
+<div class="col-md-12">
+
+  <div class="col-md-6">
+    <strong>Animes:</strong>
+
+    <ul class="nav nav-pills nav-stacked">
+      <% @author.animes.each do |anime| %>
+      <li>
+        <%= link_to anime.title, "/animes/#{anime.slug}" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <strong>Mangas:</strong>
+
+    <ul class="nav nav-pills nav-stacked">
+      <% @author.mangas.each do |manga| %>
+      <li>
+        <%= link_to manga.title, "/mangas/#{manga.slug}" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+
 <%= link_to 'Edit', edit_author_path(@author), :class=>"btn btn-success" %>
 <%= link_to 'Back', authors_path, :class=>"btn btn-primary" %>
