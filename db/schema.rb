@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824191850) do
+ActiveRecord::Schema.define(version: 20140824210019) do
 
   create_table "animes", force: true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140824191850) do
     t.integer  "author_id"
     t.string   "slug"
     t.string   "last_visited_url"
+    t.integer  "released_year"
   end
 
   add_index "animes", ["slug"], name: "index_animes_on_slug", unique: true

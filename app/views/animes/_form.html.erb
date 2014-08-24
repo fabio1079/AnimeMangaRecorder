@@ -19,6 +19,13 @@
   </div>
 
   <div class="field form-group">
+    <%= f.label :released_year, :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :released_year, :class=>"form-control" %>
+    </div>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :season, :class=>"col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :season, :class=>"form-control" %>
@@ -46,7 +53,7 @@
       <% @tags.each do |t| %>
         <label>
             <%= t.name %> <%= check_box_tag "tags[]", t.id, @anime.tags.include?(t), :id=>"tags_#{t.id}", :class=>"form-control" %>
-        </label>
+        </label> | 
       <% end %>
     </div>
   </div>

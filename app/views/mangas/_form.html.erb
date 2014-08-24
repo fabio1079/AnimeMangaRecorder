@@ -50,7 +50,7 @@
       <% @tags.each do |t| %>
         <label>
           <%= t.name %> <%= check_box_tag "tags[]", t.id, @manga.tags.include?(t), :id=>"tags_#{t.id}", :class=>"form-control" %>
-        </label>
+        </label> | 
       <% end %>
     </div>
   </div>
