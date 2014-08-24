@@ -5,27 +5,33 @@
   <%= @tag.name %>
 </p>
 
-<p>
-  <strong>Animes:</strong>
-  <ul class="nav nav-pills nav-stacked">
-    <% @tag.animes.each do |anime| %>
-    <li>
-      <%= link_to anime.title, "/animes/#{anime.slug}" %>
-    </li>
-    <% end %>
-  </ul>
-</p>
+<div class="col-md-12">
 
-<p>
-  <strong>Mangas:</strong>
-  <ul class="nav nav-pills nav-stacked">
-    <% @tag.mangas.each do |manga| %>
-    <li>
-      <%= link_to manga.title, "/mangas/#{manga.slug}" %>
-    </li>
-    <% end %>
-  </ul>
-</p>
+  <div class="col-md-6">
+    <strong>Animes:</strong>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+    <ul class="nav nav-pills nav-stacked">
+      <% @tag.animes.each do |anime| %>
+      <li>
+        <%= link_to anime.title, "/animes/#{anime.slug}" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <strong>Mangas:</strong>
+
+    <ul class="nav nav-pills nav-stacked">
+      <% @tag.mangas.each do |manga| %>
+      <li>
+        <%= link_to manga.title, "/mangas/#{manga.slug}" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+
+<%= link_to 'Edit', edit_tag_path(@tag), :class=>"btn btn-success" %>
+<%= link_to 'Back', tags_path, :class=>"btn btn-primary" %>
