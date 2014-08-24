@@ -43,6 +43,7 @@
   <div class="field">
    <%= f.label :author %>
    <%= select_tag(:author, options_for_select(@authors, :selected=>(@manga.author.nil? ? nil : @manga.author.id))) %>
+    <%= link_to "New Author", "/authors/new", :target=>"BLANK" ,:class=>"btn btn-success" %>
   </div>
 
   <div class="actions">
