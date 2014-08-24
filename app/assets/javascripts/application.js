@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+  $("table.table-striped tbody tr").hover(
+    function(){ $(this).addClass("info") }, 
+    function(){ $(this).removeClass("info") }
+  );
+});

@@ -1,6 +1,6 @@
 <h1>Listing animes</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -18,9 +18,9 @@
         <td><%= anime.season %></td>
         <td><%= anime.season_title %></td>
         <td><%= anime.episode %></td>
-        <td><%= link_to 'Show', anime %></td>
-        <td><%= link_to 'Edit', edit_anime_path(anime) %></td>
-        <td><%= link_to 'Destroy', anime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', anime, :class=>"btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_anime_path(anime), :class=>"btn btn-success" %></td>
+        <td><%= link_to 'Destroy', anime, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Anime', new_anime_path %>
+<%= link_to 'New Anime', new_anime_path, :class=>"btn btn-success" %>

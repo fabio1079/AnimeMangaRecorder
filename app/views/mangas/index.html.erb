@@ -1,6 +1,6 @@
 <h1>Listing mangas</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -18,9 +18,9 @@
         <td><%= manga.volume %></td>
         <td><%= manga.chapter %></td>
         <td><%= manga.chapter_title %></td>
-        <td><%= link_to 'Show', manga %></td>
-        <td><%= link_to 'Edit', edit_manga_path(manga) %></td>
-        <td><%= link_to 'Destroy', manga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', manga, :class=>"btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_manga_path(manga), :class=>"btn btn-success" %></td>
+        <td><%= link_to 'Destroy', manga, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Manga', new_manga_path %>
+<%= link_to 'New Manga', new_manga_path, :class=>"btn btn-success" %>
