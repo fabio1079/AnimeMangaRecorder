@@ -81,8 +81,10 @@ class AnimesController < ApplicationController
     def set_params_tags
       @params_tags = []
 
-      params[:tags].each do |tag|
-        @params_tags << Tag.find(tag)
+      unless params[:tags].nil?
+        params[:tags].each do |tag|
+          @params_tags << Tag.find(tag)
+        end
       end
 
       @params_tags
@@ -100,7 +102,7 @@ class AnimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
-      params.require(:anime).permit(:title, :season, :season_title, :episode)
+      params.require(:anime).permit(:title, :season, :season_title, :episode, :last_visited_url)
     end
 
     def tags_params
