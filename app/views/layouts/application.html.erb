@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>AnimeMangaRecorder</title>
+  <title> <%= "#{params[:controller].capitalize} - #{params[:action].capitalize}" %> </title>
   <meta charset="utf-8" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -12,15 +12,21 @@
 
 <div id="site_base" class="container-fluid">
   <div class="row">
-    <div class=".col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title"> <%= "#{params[:controller].capitalize} - #{params[:action].capitalize}" %> </h3>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-pills my-nav">
+              <li> <%= menu_link "Home", "home" %> </li>
+              <li> <%= menu_link "Animes", "animes" %> </li>
+              <li> <%= menu_link "Mangas", "mangas" %> </li>
+              <li> <%= menu_link "Tags", "tags" %> </li>
+            </ul>
+          </div>
         </div>
-
-        <div class="panel-body">
-          <%= yield %>
-        </div>
+      </div>
+      <div class="panel-body">
+        <%= yield %>
       </div>
     </div>
   </div>

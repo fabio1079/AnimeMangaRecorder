@@ -23,3 +23,16 @@
 a.btn-primary, a.btn-success, a.btn-danger {
   color: #fff;
 }
+
+.my-nav a {
+  color: #fff;
+}
+
+.my-nav a:hover {
+  color: #428BCA;
+}
+
+.my-nav a.active {
+  border: solid 1px #fff;
+  box-shadow: inset 0px 0px 2px #fff;
+}
