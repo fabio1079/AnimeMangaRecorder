@@ -18,7 +18,7 @@
 
 $(document).ready(function(){
   $("table.table-striped tbody tr").hover(
-    function(){ $(this).addClass("info") }, 
+    function(){ $(this).addClass("info") },
     function(){ $(this).removeClass("info") }
   );
 });
