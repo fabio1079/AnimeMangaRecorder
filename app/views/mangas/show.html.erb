@@ -1,6 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Tags:</strong>
+  <ul class="nav nav-pills">
+    <% @manga.tags.each do |tag| %>
+    <li>
+      <%= link_to tag.name, "/tags/#{tag.slug}" %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= link_to @manga.author.name, "/authors/#{@manga.author.slug}" %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @manga.title %>
 </p>

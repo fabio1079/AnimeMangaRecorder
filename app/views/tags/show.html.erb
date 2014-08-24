@@ -5,5 +5,27 @@
   <%= @tag.name %>
 </p>
 
+<p>
+  <strong>Animes:</strong>
+  <ul class="nav nav-pills nav-stacked">
+    <% @tag.animes.each do |anime| %>
+    <li>
+      <%= link_to anime.title, "/animes/#{anime.slug}" %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Mangas:</strong>
+  <ul class="nav nav-pills nav-stacked">
+    <% @tag.mangas.each do |manga| %>
+    <li>
+      <%= link_to manga.title, "/mangas/#{manga.slug}" %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>
