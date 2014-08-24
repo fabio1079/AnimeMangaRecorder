@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <strong>Tags:</strong>
+  <ul class="nav nav-pills">
+    <% @tags.each do |tag| %>
+    <li>
+      <%= link_to tag.name, "/tags/#{tag.slug}" %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-md-6">
+  <strong>Animes:</strong>
+  <ul class="nav nav-pills nav-stacked">
+    <% @animes.each do |anime| %>
+    <li> <%= link_to anime.title, "/animes/#{anime.slug}" %> </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-md-6">
+  <strong>Mangas:</strong>
+  <ul class="nav nav-pills nav-stacked">
+    <% @mangas.each do |manga| %>
+    <li> <%= link_to manga.title, "/mangas/#{manga.slug}" %> </li>
+    <% end %>
+  </ul>
+</div>
