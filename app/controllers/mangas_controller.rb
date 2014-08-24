@@ -81,8 +81,10 @@ class MangasController < ApplicationController
     def set_params_tags
       @params_tags = []
 
-      params[:tags].each do |tag|
-        @params_tags << Tag.find(tag)
+      unless params[:tags].nil?
+        params[:tags].each do |tag|
+          @params_tags << Tag.find(tag)
+        end
       end
 
       @params_tags
@@ -100,7 +102,7 @@ class MangasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manga_params
-      params.require(:manga).permit(:title, :volume, :chapter, :chapter_title)
+      params.require(:manga).permit(:title, :volume, :chapter, :chapter_title, :last_visited_url)
     end
 
     def tags_params

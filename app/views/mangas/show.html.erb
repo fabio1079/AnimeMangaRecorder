@@ -36,5 +36,10 @@
   <%= @manga.chapter_title %>
 </p>
 
+<p>
+  <strong>Last Visited URL:</strong>
+  <%= link_to @manga.last_visited_url, @manga.last_visited_url  %>
+</p>
+
 <%= link_to 'Edit', edit_manga_path(@manga), :class=>"btn btn-success" %>
 <%= link_to 'Back', mangas_path, :class=>"btn btn-primary" %>
