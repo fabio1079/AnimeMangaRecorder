@@ -6,14 +6,14 @@ class HomeController < ApplicationController
   private
 
   def set_animes
-    @animes = Anime.all
+    @animes = Anime.order :title
   end
 
   def set_mangas
-    @mangas = Manga.all
+    @mangas = Manga.order :title
   end
 
   def set_tags
-    @tags = Tag.all
+    @tags = Tag.order :name
   end
 end

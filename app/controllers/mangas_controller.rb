@@ -75,7 +75,7 @@ class MangasController < ApplicationController
     end
 
     def set_tags
-      @tags = Tag.all
+      @tags = Tag.order :name
     end
 
     def set_params_tags

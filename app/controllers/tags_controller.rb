@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.order :name=>:desc
+    @tags = Tag.order :name
   end
 
   # GET /tags/1
