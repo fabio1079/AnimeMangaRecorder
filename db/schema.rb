@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728201803) do
+ActiveRecord::Schema.define(version: 20140824191850) do
 
   create_table "animes", force: true do |t|
     t.string   "title"
     t.string   "season"
-    t.string   "season_title", default: ""
+    t.string   "season_title",     default: ""
     t.integer  "episode"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
     t.string   "slug"
+    t.string   "last_visited_url"
   end
 
   add_index "animes", ["slug"], name: "index_animes_on_slug", unique: true
@@ -62,11 +63,12 @@ ActiveRecord::Schema.define(version: 20140728201803) do
     t.string   "title"
     t.string   "volume"
     t.integer  "chapter"
-    t.string   "chapter_title", default: ""
+    t.string   "chapter_title",    default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
     t.string   "slug"
+    t.string   "last_visited_url"
   end
 
   add_index "mangas", ["slug"], name: "index_mangas_on_slug", unique: true
