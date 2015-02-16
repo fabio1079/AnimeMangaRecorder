@@ -1,5 +1,8 @@
 class Anime < ActiveRecord::Base
   extend FriendlyId
+  include ValidatorHelper
+
+  validate :validate_sites_urls
 
   belongs_to :author
   has_and_belongs_to_many :tags
@@ -17,6 +20,8 @@ class Anime < ActiveRecord::Base
   validates :season, :episode,
     :presence=>true,
     :length=>{ :minimum=>1, :maximum=>10 }
+
+  serialize :sites, Array
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
