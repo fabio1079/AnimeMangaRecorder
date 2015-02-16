@@ -13,22 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20140824210019) do
 
-  create_table "animes", force: true do |t|
-    t.string   "title"
-    t.string   "season"
-    t.string   "season_title",     default: ""
+  create_table "animes", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.string   "season",           limit: 255
+    t.string   "season_title",     limit: 255, default: ""
     t.integer  "episode"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
-    t.string   "slug"
-    t.string   "last_visited_url"
+    t.string   "slug",             limit: 255
+    t.string   "last_visited_url", limit: 255
     t.integer  "released_year"
   end
 
   add_index "animes", ["slug"], name: "index_animes_on_slug", unique: true
 
-  create_table "animes_tags", force: true do |t|
+  create_table "animes_tags", force: :cascade do |t|
     t.integer  "anime_id"
     t.integer  "tag_id"
     t.datetime "created_at"
@@ -38,20 +38,20 @@ ActiveRecord::Schema.define(version: 20140824210019) do
   add_index "animes_tags", ["anime_id"], name: "index_animes_tags_on_anime_id"
   add_index "animes_tags", ["tag_id"], name: "index_animes_tags_on_tag_id"
 
-  create_table "authors", force: true do |t|
-    t.string   "name"
+  create_table "authors", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string   "slug",       limit: 255
   end
 
   add_index "authors", ["slug"], name: "index_authors_on_slug", unique: true
 
-  create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",               null: false
     t.string   "sluggable_type", limit: 50
-    t.string   "scope"
+    t.string   "scope",          limit: 255
     t.datetime "created_at"
   end
 
@@ -60,21 +60,21 @@ ActiveRecord::Schema.define(version: 20140824210019) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
-  create_table "mangas", force: true do |t|
-    t.string   "title"
-    t.string   "volume"
+  create_table "mangas", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.string   "volume",           limit: 255
     t.integer  "chapter"
-    t.string   "chapter_title",    default: ""
+    t.string   "chapter_title",    limit: 255, default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
-    t.string   "slug"
-    t.string   "last_visited_url"
+    t.string   "slug",             limit: 255
+    t.string   "last_visited_url", limit: 255
   end
 
   add_index "mangas", ["slug"], name: "index_mangas_on_slug", unique: true
 
-  create_table "mangas_tags", force: true do |t|
+  create_table "mangas_tags", force: :cascade do |t|
     t.integer  "manga_id"
     t.integer  "tag_id"
     t.datetime "created_at"
@@ -84,11 +84,11 @@ ActiveRecord::Schema.define(version: 20140824210019) do
   add_index "mangas_tags", ["manga_id"], name: "index_mangas_tags_on_manga_id"
   add_index "mangas_tags", ["tag_id"], name: "index_mangas_tags_on_tag_id"
 
-  create_table "tags", force: true do |t|
-    t.string   "name"
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string   "slug",       limit: 255
   end
 
   add_index "tags", ["slug"], name: "index_tags_on_slug", unique: true
