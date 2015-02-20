@@ -104,8 +104,4 @@ class AnimesController < ApplicationController
     def anime_params
       params.require(:anime).permit(:title, :season, :season_title, :episode, :last_visited_url, :released_year)
     end
-
-    def tags_params
-      params.permit(:tags=>[])
-    end
 end
