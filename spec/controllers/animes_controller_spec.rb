@@ -24,7 +24,7 @@ RSpec.describe AnimesController, :type => :controller do
   end
 
   describe 'GET show' do
-    it 'should assin anime based on passed param' do
+    it 'should assign anime based on passed param' do
       last_anime = Anime.last
       get :show, :id=> last_anime.id
 
@@ -33,7 +33,7 @@ RSpec.describe AnimesController, :type => :controller do
   end
 
   describe 'GET new' do
-    it 'should assin a new anime' do
+    it 'should assign a new anime' do
       get :new
 
       expect(assigns(:anime)).to be_a Anime

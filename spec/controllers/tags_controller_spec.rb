@@ -16,7 +16,7 @@ RSpec.describe TagsController, :type => :controller do
   end
 
   describe 'GET show' do
-    it 'should assin tag based on passed param' do
+    it 'should assign tag based on passed param' do
       last_tag = Tag.last
       get :show, :id=> last_tag.id
 
@@ -25,7 +25,7 @@ RSpec.describe TagsController, :type => :controller do
   end
 
   describe 'GET new' do
-    it 'should assin a new tag' do
+    it 'should assign a new tag' do
       get :new
 
       expect(assigns(:tag)).to be_a Tag
