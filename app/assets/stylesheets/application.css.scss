@@ -14,6 +14,7 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 #site_base {
@@ -35,4 +36,20 @@ a.btn-primary, a.btn-success, a.btn-danger {
 .my-nav a.active {
   border: solid 1px #fff;
   box-shadow: inset 0px 0px 2px #fff;
+}
+
+#site-url, #add-url {
+  display: none;
+}
+
+.add-url-container {
+  margin-top: 4px;
+}
+
+#sites-url-list {
+  line-height: 40px;
+}
+
+.remove-url {
+  margin-left: 10px;
 }

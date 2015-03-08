@@ -1,7 +1,7 @@
 class AnimesController < ApplicationController
   before_action :set_anime, only: [:show, :edit, :update, :destroy]
   before_action :set_tags, :set_authors, only: [:show, :new, :edit, :create, :update]
-  before_action :set_params_tags, :set_author, only: [:update, :create]
+  before_action :set_params_tags, :set_author, :set_params_sites, only: [:update, :create]
 
   # GET /animes
   # GET /animes.json
@@ -28,6 +28,7 @@ class AnimesController < ApplicationController
   def create
     @anime = Anime.new(anime_params)
     @anime.tags = @params_tags
+    @anime.sites = @params_sites
     @anime.author = @author
 
     respond_to do |format|
@@ -88,6 +89,14 @@ class AnimesController < ApplicationController
       end
 
       @params_tags
+    end
+
+    def set_params_sites
+      @params_sites = []
+
+      @params_sites = params[:sites] unless params[:sites].nil?
+
+      @params_sites
     end
 
     def set_author

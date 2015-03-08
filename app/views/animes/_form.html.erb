@@ -53,7 +53,7 @@
       <% @tags.each do |t| %>
         <label>
             <%= t.name %> <%= check_box_tag "tags[]", t.id, @anime.tags.include?(t), :id=>"tags_#{t.id}", :class=>"form-control" %>
-        </label> | 
+        </label> |
       <% end %>
     </div>
   </div>
@@ -76,6 +76,26 @@
     <%= f.label :last_visited_url, :class=>"col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :last_visited_url, :class=>"form-control" %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :sites, :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <div class="row">
+          <input type="button" class='btn btn-primary' id="add-new-site-url" value="Add new site url" />
+          <div class="col-sm-11">
+            <input type="text" id="site-url" value="" class="form-control" />
+          </div>
+
+          <div class="col-sm-1 add-url-container">
+            <span class="glyphicon glyphicon-plus btn btn-success" id="add-url">Add</span>
+          </div>
+
+          <div class="col-sm-12">
+            <ul id='sites-url-list'></ul>
+          </div>
+      </div>
     </div>
   </div>
 

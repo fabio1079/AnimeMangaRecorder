@@ -16,9 +16,52 @@
 //= require bootstrap
 //= require_tree .
 
-$(document).ready(function(){
+(function() {
   $("table.table-striped tbody tr").hover(
     function(){ $(this).addClass("info") },
     function(){ $(this).removeClass("info") }
   );
-});
+
+
+  $("#add-new-site-url").on('click', function() {
+    $(this).hide();
+
+    $('#add-url').show();
+    $('#site-url').show();
+  });
+
+
+  $("#add-url").on('click', function() {
+    var text = $('#site-url').val().trim();
+
+    if(text.length) {
+      var li = document.createElement('li');
+      var span = document.createElement('span');
+      var hidden = document.createElement('input');
+
+      span.setAttribute('class', 'glyphicon glyphicon-minus btn btn-success remove-url');
+      span.textContent = 'Remove';
+
+      hidden.setAttribute('type', 'hidden');
+      hidden.setAttribute('name', 'sites[]');
+      hidden.setAttribute('value', text);
+
+      li.textContent = text;
+      li.appendChild(span);
+      li.appendChild(hidden);
+
+      $("#sites-url-list").append(li);
+
+      $('.remove-url').on('click', remove_url_action);
+    }
+
+    $('#site-url').val('');
+    $('#add-url').hide();
+    $('#site-url').hide();
+    $("#add-new-site-url").show();
+  });
+
+  function remove_url_action() {
+    $(this).parent().remove();
+  }
+} ());
