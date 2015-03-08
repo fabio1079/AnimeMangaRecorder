@@ -104,12 +104,4 @@ class MangasController < ApplicationController
     def manga_params
       params.require(:manga).permit(:title, :volume, :chapter, :chapter_title, :last_visited_url)
     end
-
-    def tags_params
-      params.permit(:tags=>[])
-    end
-
-    def author_params
-      params.permit(:author=>[]);
-    end
 end
