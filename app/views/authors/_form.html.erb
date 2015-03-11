@@ -1,16 +1,21 @@
-<%= form_for(@author, :html=>{:class=>"form-horizontal"}) do |f| %>
-  <% if @author.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
+<% if @author.errors.any? %>
+  <div class="row">
+    <div class="col-md-12 container">
+      <div id="error_explanation" class="col-centered">
+        <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
 
-      <ul>
-      <% @author.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @author.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
+<div class="col-md-10">
+<%= bootstrap_form_for(@author, :html=>{:class=>"form-horizontal"}) do |f| %>
   <div class="field form-group">
     <%= f.label :name, :class=>"col-sm-2 control-label" %>
 
@@ -24,3 +29,4 @@
     <%= link_to 'Back', authors_path, :class=>"btn btn-primary" %>
   </div>
 <% end %>
+</div>
