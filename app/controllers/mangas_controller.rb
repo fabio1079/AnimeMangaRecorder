@@ -91,7 +91,11 @@ class MangasController < ApplicationController
     end
 
     def set_author
-      @author = Author.friendly.find(params[:author])
+      @author = if params[:author].nil?
+        Author::new
+      else
+        Author.friendly.find(params[:author])
+      end
     end
 
     def set_authors

@@ -1,16 +1,21 @@
-<%= form_for(@manga, :html=>{:class=>"form-horizontal"}) do |f| %>
-  <% if @manga.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@manga.errors.count, "error") %> prohibited this manga from being saved:</h2>
+<% if @manga.errors.any? %>
+  <div class="row">
+    <div class="col-md-12 container">
+      <div id="error_explanation" class="col-centered">
+        <h2><%= pluralize(@manga.errors.count, "error") %> prohibited this manga from being saved:</h2>
 
-      <ul>
-      <% @manga.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @manga.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
+<div class="col-md-10">
+<%= bootstrap_form_for(@manga, :html=>{:class=>"form-horizontal"}) do |f| %>
   <div class="field form-group">
     <%= f.label :title, :class=>"col-sm-2 control-label" %>
 
@@ -50,7 +55,7 @@
       <% @tags.each do |t| %>
         <label>
           <%= t.name %> <%= check_box_tag "tags[]", t.id, @manga.tags.include?(t), :id=>"tags_#{t.id}", :class=>"form-control" %>
-        </label> | 
+        </label> |
       <% end %>
     </div>
   </div>
@@ -81,3 +86,4 @@
     <%= link_to 'Back', mangas_path, :class=>"btn btn-primary" %>
   </div>
 <% end %>
+</div>
