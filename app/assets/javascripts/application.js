@@ -61,6 +61,8 @@
     $("#add-new-site-url").show();
   });
 
+  $('.remove-url').on('click', remove_url_action);
+
   function remove_url_action() {
     $(this).parent().remove();
   }

@@ -47,6 +47,7 @@ class AnimesController < ApplicationController
   def update
     @anime.tags = @params_tags
     @anime.author = @author
+    @anime.sites = @params_sites
 
     respond_to do |format|
       if @anime.update(anime_params)
