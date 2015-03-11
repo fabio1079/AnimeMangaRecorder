@@ -18,3 +18,6 @@
 # My ignored files and folders
 *.swp
 coverage/
+Gemfile.lock
+db/schema.rb
+
