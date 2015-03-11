@@ -1,106 +1,112 @@
-<%= form_for(@anime, :html=>{:class=>"form-horizontal"}) do |f| %>
-  <% if @anime.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@anime.errors.count, "error") %> prohibited this anime from being saved:</h2>
+<% if @anime.errors.any? %>
+  <div class="row">
+    <div class="col-md-12 container">
+      <div id="error_explanation" class="col-centered">
+        <h2><%= pluralize(@anime.errors.count, "error") %> prohibited this anime from being saved:</h2>
 
-      <ul>
-      <% @anime.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field form-group">
-    <%= f.label :title, :class=>"col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :title, :class=>"form-control" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :released_year, :class=>"col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :released_year, :class=>"form-control" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :season, :class=>"col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :season, :class=>"form-control" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :season_title, :class=>"col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :season_title, :class=>"form-control" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :episode, :class=>"col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :episode, :class=>"form-control" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <label class="col-sm-2 control-label"> Tags: </label>
-
-    <div class="col-sm-10">
-      <% @tags.each do |t| %>
-        <label>
-            <%= t.name %> <%= check_box_tag "tags[]", t.id, @anime.tags.include?(t), :id=>"tags_#{t.id}", :class=>"form-control" %>
-        </label> |
-      <% end %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-   <%= f.label :author, :class=>"col-sm-2 control-label" %>
-
-   <div class="col-sm-10">
-    <div class="col-sm-8">
-     <%= select_tag(:author, options_for_select(@authors, :selected=>(@anime.author.nil? ? nil : @anime.author.id)), :class=>"form-control") %>
-    </div>
-
-    <div class="col-sm-2">
-      <%= link_to "New Author", "/authors/new", :target=>"BLANK" ,:class=>"btn btn-success" %>
-    </div>
-   </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :last_visited_url, :class=>"col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :last_visited_url, :class=>"form-control" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :sites, :class=>"col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <div class="row">
-          <input type="button" class='btn btn-primary' id="add-new-site-url" value="Add new site url" />
-          <div class="col-sm-11">
-            <input type="text" id="site-url" value="" class="form-control" />
-          </div>
-
-          <div class="col-sm-1 add-url-container">
-            <span class="glyphicon glyphicon-plus btn btn-success" id="add-url">Add</span>
-          </div>
-
-          <div class="col-sm-12">
-            <ul id='sites-url-list'></ul>
-          </div>
+        <ul class='list'>
+        <% @anime.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
       </div>
     </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit(:class=>"btn btn-success") %>
-    <%= link_to 'Back', animes_path, :class=>"btn btn-primary" %>
-  </div>
 <% end %>
+
+<div class="col-md-10">
+  <%= bootstrap_form_for(@anime, :html=>{:class=>"form-horizontal"}) do |f| %>
+    <div class="field form-group">
+      <%= f.label :title, :class=>"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :title, :class=>"form-control" %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :released_year, :class=>"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :released_year, :class=>"form-control" %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :season, :class=>"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :season, :class=>"form-control" %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :season_title, :class=>"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :season_title, :class=>"form-control" %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :episode, :class=>"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :episode, :class=>"form-control" %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <label class="col-sm-2 control-label"> Tags: </label>
+
+      <div class="col-sm-10">
+        <% @tags.each do |t| %>
+          <label>
+              <%= t.name %> <%= check_box_tag "tags[]", t.id, @anime.tags.include?(t), :id=>"tags_#{t.id}", :class=>"form-control" %>
+          </label> |
+        <% end %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+     <%= f.label :author, :class=>"col-sm-2 control-label" %>
+
+     <div class="col-sm-10">
+      <div class="col-sm-8">
+       <%= select_tag(:author, options_for_select(@authors, :selected=>(@anime.author.nil? ? nil : @anime.author.id)), :class=>"form-control") %>
+      </div>
+
+      <div class="col-sm-2">
+        <%= link_to "New Author", "/authors/new", :target=>"BLANK" ,:class=>"btn btn-success" %>
+      </div>
+     </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :last_visited_url, :class=>"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :last_visited_url, :class=>"form-control" %>
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :sites, :class=>"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <div class="row">
+            <input type="button" class='btn btn-primary' id="add-new-site-url" value="Add new site url" />
+            <div class="col-sm-11">
+              <input type="text" id="site-url" value="" class="form-control" />
+            </div>
+
+            <div class="col-sm-1 add-url-container">
+              <span class="glyphicon glyphicon-plus btn btn-success" id="add-url">Add</span>
+            </div>
+
+            <div class="col-sm-12">
+              <ul id='sites-url-list'></ul>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit(:class=>"btn btn-success") %>
+      <%= link_to 'Back', animes_path, :class=>"btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
