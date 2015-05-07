@@ -20,4 +20,5 @@
 coverage/
 Gemfile.lock
 db/schema.rb
+.idea/
 
