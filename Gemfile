@@ -44,6 +44,12 @@ gem 'simplecov', :require => false, :group => :test
 
 gem 'bootstrap_form'
 
+gem 'mustache-js-rails'
+
+gem 'sprockets'
+
+gem 'sprockets-es6', require: 'sprockets/es6'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

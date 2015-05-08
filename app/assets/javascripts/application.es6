@@ -14,9 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require mustache
 //= require_tree .
 
 (function() {
+  "use strict";
+
   $("table.table-striped tbody tr").hover(
     function(){ $(this).addClass("info") },
     function(){ $(this).removeClass("info") }
