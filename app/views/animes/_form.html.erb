@@ -72,15 +72,42 @@
           </div>
 
           <div class="col-sm-12">
-            <ul id='sites-url-list'>
-              <% @anime.sites.each do |site| %>
-                <li>
-                  <%= site %>
-                  <span class="glyphicon glyphicon-minus btn btn-success remove-url">Remove</span>
-                  <input type="hidden" name="sites[]" value="<%= site %>">
-                </li>
-              <% end %>
-            </ul>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="col-sm-11">URL</th>
+                  <th class="col-sm-1">Remove</th>
+                </tr>
+              </thead>
+
+              <tbody id='sites-url-list'>
+                <% @anime.sites.each do |site| %>
+                  <tr>
+                    <td>
+                      <%= site %>
+                      <%= hidden_field_tag "sites[]", site %>
+                    </td>
+
+                    <td>
+                      <span class="glyphicon glyphicon-minus btn btn-danger remove-url"></span>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            <script id="sites_urls_template" type="x-tmpl-mustache">
+              <tr>
+                <td>
+                  {{site}}
+                  <input type="hidden" name="sites[]" value="{{site}}">
+                </td>
+
+                <td>
+                  <span class="glyphicon glyphicon-minus btn btn-danger remove-url"></span>
+                </td>
+              </tr>
+            </script>
           </div>
         </div>
       </div>

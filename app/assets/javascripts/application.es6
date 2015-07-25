@@ -35,27 +35,17 @@
 
 
   $("#add-url").on('click', function() {
-    var text = $('#site-url').val().trim();
+    var site_url = $('#site-url').val().trim();
+    var url_regex = new RegExp("^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$");
 
-    if(text.length) {
-      var li = document.createElement('li');
-      var span = document.createElement('span');
-      var hidden = document.createElement('input');
+    if(site_url.length > 0 && url_regex.test(site_url)) {
+      var template = $('#sites_urls_template').html();
+      var rendered = Mustache.render(template, {site: site_url});
 
-      span.setAttribute('class', 'glyphicon glyphicon-minus btn btn-success remove-url');
-      span.textContent = 'Remove';
-
-      hidden.setAttribute('type', 'hidden');
-      hidden.setAttribute('name', 'sites[]');
-      hidden.setAttribute('value', text);
-
-      li.textContent = text;
-      li.appendChild(span);
-      li.appendChild(hidden);
-
-      $("#sites-url-list").append(li);
-
+      $("#sites-url-list").append(rendered);
       $('.remove-url').on('click', remove_url_action);
+    } else {
+      // TODO - add invalid url message
     }
 
     $('#site-url').val('');
@@ -67,6 +57,6 @@
   $('.remove-url').on('click', remove_url_action);
 
   function remove_url_action() {
-    $(this).parent().remove();
+    $(this).parent().parent().remove();
   }
 } ());
