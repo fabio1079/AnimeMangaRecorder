@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -36,7 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'debugger', group: [:development, :test]
 
 # My gems
-gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'friendly_id', '~> 5.1.0'
 
